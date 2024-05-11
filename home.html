@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Static Website</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-800" style="height: 100%;">
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="absolute -inset-0.5"></span>
+            <span class="sr-only">Open main menu</span>
+            <!--
+              Icon when menu is closed.
+  
+              Menu open: "hidden", Menu closed: "block"
+            -->
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
+              Icon when menu is open.
+  
+              Menu open: "block", Menu closed: "hidden"
+            -->
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a href="#" onclick="showPage('home');"  class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
+              <a href="#" onclick="showPage('about');" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+              <a href="#" onclick="showPage('contact');" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+            </div>
+          </div>
+        </div>
+
+         <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+          <div class="space-y-1 px-2 pb-3 pt-2">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="#" onclick="showPage('home');" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
+            <a href="#" onclick="showPage('about');" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About</a>
+            <a href="#" onclick="showPage('contact');" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mx-auto mt-8" style="height: 840px;">
+        <!-- Home Page -->
+        <div id="home" class="page">
+          <div class="card">
+            <div class="max-w-md mx-auto bg-white rounded-md shadow-md p-6 page-content">
+              <h2 class="text-2xl font-bold mb-4">Selamat Datang di Halaman Beranda</h2>
+              <p>Ini adalah halaman beranda kami. Silakan jelajahi situs web kami untuk informasi lebih lanjut.</p>
+            </div>
+              <!-- <h1 class="text-3xl font-semibold text-center">Welcome to My Website!</h1>
+              <p class="mt-4 text-center">This is a static website built using Tailwind CSS.</p>
+              <p class="mt-4 text-center">Feel free to explore the content.</p>
+              <img src="coder.jpg" alt=""> -->
+          </div>
+      </div>
+
+      <!-- About Page -->
+      <div id="about" class="page hidden">
+          <div class="card">
+              <h1 class="text-3xl font-semibold text-center">About Us</h1>
+              <p class="mt-4 text-center">We are a small team passionate about web development.</p>
+              <p class="mt-4 text-center">Our goal is to create beautiful and functional websites.</p>
+          </div>
+      </div>
+
+      <!-- Contact Page -->
+      <div id="contact" class="page hidden">
+          <div class="card">
+              <h1 class="text-3xl font-semibold text-center">Contact Us</h1>
+              <p class="mt-4 text-center">You can reach out to us via email at example@example.com.</p>
+              <p class="mt-4 text-center">Or visit us at:</p>
+              <p class="text-center">123 Web Development Street</p>
+              <p class="text-center">City, Country</p>
+          </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-4 text-center">
+      <div class="container mx-auto">
+          <p>&copy; 2024 My Static Website. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript to toggle between pages -->
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(function (page) {
+                page.classList.add('hidden');
+            });
+            
+            // Show the selected page
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+        
+        // Show home page by default
+        showPage('home');
+    </script>
+</body>
+
+</html>
+<!-- Konten dari halaman akan dimuat di sini
+<div class="max-w-md mx-auto bg-white rounded-md shadow-md p-6 page-content">
+    <h2 class="text-2xl font-bold mb-4">Selamat Datang di Halaman Beranda</h2>
+    <p>Ini adalah halaman beranda kami. Silakan jelajahi situs web kami untuk informasi lebih lanjut.</p>
+</div>
+
+  <div class="max-w-md mx-auto bg-white rounded-md shadow-md p-6 page-content">
+    <h2 class="text-2xl font-bold mb-4">Tentang Kami</h2>
+    <p>Kami adalah perusahaan yang bergerak di bidang teknologi informasi. Kami menyediakan berbagai layanan terkait pengembangan perangkat lunak.</p>
+</div>            
+
+<div class="max-w-md mx-auto bg-white rounded-md shadow-md p-6 page-content">
+    <h2 class="text-2xl font-bold mb-4">Hubungi Kami</h2>
+    <p>Email: info@contoh.com</p>
+    <p>Telepon: 123-456-789</p>
+    <p>Alamat: Jalan Contoh No. 123, Kota Contoh, Negara Contoh</p>
+</div> -->
+            
